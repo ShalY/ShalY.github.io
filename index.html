@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<head>
+    <link rel="stylesheet" href="standard.css">
 </head>
 <body>
-<h1>
-    Hello World
-</h1>
+
+<h1 onmouseover="highlight()"; onmouseout="unhighlight()" id="h1">Hello World </h1>
+
+
+<script>
+    function highlight() {
+
+        document.getElementsByTagName("H1")[0].setAttribute("class", "highlight");
+        console.log(document.getElementById("h1").getAttribute("class"));
+    }
+
+    function unhighlight(){
+        document.getElementsByTagName("H1")[0].setAttribute("class", "unhighlight");
+        console.log(document.getElementById("h1").getAttribute("class"));
+    }
+</script>
+
 </body>
 </html>

@@ -1,0 +1,38 @@
+.highlight {
+    animation-name: highlight;
+    animation-duration: 0.5s;
+    color:yellow;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes highlight {
+    from {color: black;}
+    to {color: yellow;}
+}
+
+/* Standard syntax */
+@keyframes highlight {
+    from {color: black;}
+    to {color: yellow;}
+}
+
+.unhighlight {
+    animation-name: unhighlight;
+    animation-duration: 0.5s;
+    color:black;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes unhighlight {
+    from {color: yellow;}
+    to {color: black;}
+}
+
+/* Standard syntax */
+@keyframes unhighlight {
+    from {color: yellow;}
+    to {color: black;}
+}
+
+
+
