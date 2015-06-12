@@ -1,0 +1,45 @@
+div {
+    margin: 0;
+    padding: 0;
+}
+
+div.body {
+    position: relative;
+    top: 0px;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    overflow: auto;
+}
+
+div.encompasser {
+    position: absolute;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: visible;
+}
+
+div.right {
+    float: left;
+    position: relative;
+    left: 0;
+    width: 20%;
+    height: 200;
+}
+
+div.left {
+    float: left;
+    position: relative;
+    left: 0;
+    width: 20%;
+    height: auto;
+}
+
+div.center {
+    margin-top: 20px;
+    float: left;
+    position: relative; 
+    width: 60%; 
+}
