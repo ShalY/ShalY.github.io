@@ -183,6 +183,7 @@ a:after {
 
 /* Social Links */
 #social {
+    background-color: #4e4e4e;
 	width: 100%;
 	padding-top: 200px;
 	padding-bottom: 200px;
@@ -194,7 +195,7 @@ a:after {
 }
 
 #social .col-md-3:hover {
-	background-color: #f5f5f5;
+	background-color: #3e3e3e;
 }
 
 #social .col-md-3 {
