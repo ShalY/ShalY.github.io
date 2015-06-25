@@ -18,6 +18,18 @@
 
     <script src="jquery-1.10.2.js"></script>
     <script src="assets/js/chart.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <!--<script>-->
+        <!--$.fn.textWidth = function(){-->
+            <!--var html_org = $(this).html();-->
+            <!--var html_calc = '<span>' + html_org + '</span>';-->
+            <!--$(this).html(html_calc);-->
+            <!--var width = $(this).find('span:first').width();-->
+            <!--$(this).html(html_org);-->
+            <!--console.log(width);-->
+            <!--return width;-->
+        <!--};-->
+        <!--</script>-->
 
 <body>
 
@@ -34,29 +46,164 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#start">Home</a></li>
+                    <li class="active"><a href="#text">Description</a></li>
                     <li class="active"><a href="#contact">Contact</a></li>
+                    <li class="active"><a href="#pictures">Pictures</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
         </div>
     </div>
 
-
+    <section id="start"></section>
     <div id="hello">
-        <div class="container">
+
+        <canvas id="canvas" style="position: absolute; width: 100%; top: 80px; height: 106.5%">
+
+        </canvas>
+        <div class="container" >
+
+
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 centered">
-                    <h1>Website</h1>
-                    <h2>Made by Shalom Yiblet</h2>
+                <div  class="col-lg-8 col-lg-offset-2 centered">
+                    <div id="helloText">
+                        <h1 id="title">Website</h1>
+                        <h2>Made by Shalom Yiblet</h2>
+
+                    </div>
                 </div>
+
+
                 <!-- /col-lg-8 -->
             </div>
             <!-- /row -->
         </div>
+
+
+        <script>
+            //        $(document).ready(circles);
+
+            function circles(){
+
+                var counter = 0;
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+
+//                context.arc(canvas.width / 2, canvas.height / 2, 70, 0, Math.PI * 2);
+//                context.stroke();
+                context.shadowBlur = 5;
+                context.shadowColor = '#656565';
+
+
+
+
+                var currentStroke = "#74cfae";
+//
+                var Time = new Date();
+                var width = canvas.width;
+                var  height = canvas.height;
+                var circleCount = 1;
+                var prevStroke = "#4e4e4e";
+//                console.log(prevStroke);
+
+                //
+
+
+                window.requestAnimationFrame(draw);
+
+
+                function draw(){
+                    var canvas = document.getElementById("canvas");
+                    var ctx = canvas.getContext("2d");
+                    var current = new Date();
+//                    var prefRadius = $("#title").textWidth() / 1.9;
+                    var completeness = (current.getTime() - Time.getTime()) / 4000;
+                    var rad  = Math.PI * 2 * completeness;
+                    ctx.lineWidth = height * 0.05;
+                    ctx.clearRect(0,0,canvas.width, canvas.height);
+
+
+
+
+//                        setInterval()
+
+                    for(var i = 0; i < circleCount; i++){
+                        ctx.save();
+//                            context.lineWidth -= i*3;
+                        ctx.strokeStyle = currentStroke;
+                        ctx.translate(width / 2 + 0.5, height / 2 + 0.5);
+                        ctx.rotate(Math.PI * (i));
+                        ctx.beginPath();
+                        var prefRadius = $("#title").textWidth() / 1.4;
+                        var radius = prefRadius  +  prefRadius * 0.25 * i;
+                        ctx.arc(0,0,radius , 0, rad);
+                        ctx.stroke();
+
+
+                        ctx.beginPath();
+                        ctx.strokeStyle = prevStroke;
+                        ctx.arc(0,0,radius,rad, Math.PI*2);
+                        ctx.stroke();
+//
+
+                        ctx.restore();
+                    };
+
+
+
+                    counter++;
+
+                    if(completeness > 0.98){
+                        Time.setTime(current.getTime());
+//                            rad = 0;
+//                            console.log(counter);
+                        counter = 0;
+
+
+                        if(circleCount < 3) {
+                            circleCount++;
+                        }
+
+                        s = prevStroke;
+                        prevStroke = currentStroke;
+                        currentStroke = s;
+
+
+                        window.requestAnimationFrame(draw);
+
+                    }else{
+                        window.requestAnimationFrame(draw);
+                    }
+
+
+                }
+            }
+
+
+
+        </script>
+        <script>
+            $(document).ready(
+                    function(){
+                        var h = $("canvas").parent().height() + 500 + "px"
+                        console.log(h);
+                        $("#canvas").attr("height", h);
+                        $("#canvas").css("height", h);
+
+                        $("#canvas").attr("width", $("canvas").parent().width() + "px");
+
+                        $("#canvas").css('top', ($("#hello")[0].getBoundingClientRect().top) + "px");
+
+                        circles();
+                    }
+
+            )
+        </script>
         <!-- /container -->
     </div>
     <!-- /hello -->
-
+    <section id="text"></section>
     <div id="green">
         <div class="container">
             <div class="row">
@@ -72,6 +219,7 @@
         </div>
     </div>
 
+    <section id="pictures"></section>
     <div class="container">
         <div class="row centered mt grid">
             <h3>SOME PICTURES</h3>
@@ -204,7 +352,7 @@
                     </div>
 
                     <div class="col-md-3">
-                        <a href="mailto:shalom.567@gmail.com?subject=From yiblet.tk"><i class="fa fa-envelope"></i></a>
+                        <a href="mailto:shalom567@gmail.com?subject=From yiblet.tk"><i class="fa fa-envelope"></i></a>
                     </div>
 
                 </div>
@@ -218,7 +366,7 @@
     <div id="f">
         <div class="container">
             <div class="row">
-                <p>Crafted with <i class="fa fa-heart"></i> by BlackTie.co.</p>
+                <p>Copyright Shalom Yiblet © 2015.</p>
             </div>
         </div>
     </div>
@@ -227,6 +375,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/bootstrap.js"></script>
+
+
+
 </body>
 
 </html>
